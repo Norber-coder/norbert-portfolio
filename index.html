@@ -3,56 +3,195 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
+    <meta
+      name="description"
+      content="Norbert's portfolio: projects, skills, and contact information."
+    />
+    <title>Norbert | Portfolio</title>
     <style>
+      :root {
+        color-scheme: dark;
+        --background: #0b1120;
+        --surface: #111a2e;
+        --surface-raised: #17233b;
+        --text: #eef2ff;
+        --muted: #a7b3ca;
+        --accent: #73e0c1;
+        --border: rgb(255 255 255 / 10%);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
         margin: 0;
-        padding: 2rem;
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        color: #1f2937;
-        background: #f3f4f6;
+        background: var(--background);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.65;
       }
+      a { color: inherit; }
+      .container { width: min(1100px, calc(100% - 2.5rem)); margin: 0 auto; }
 
-      main {
-        max-width: 900px;
-        margin: 0 auto;
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--border);
+        background: rgb(11 17 32 / 90%);
+        backdrop-filter: blur(14px);
       }
+      .nav {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+      }
+      .brand { color: var(--accent); font-weight: 800; text-decoration: none; letter-spacing: .04em; }
+      .nav-links { display: flex; flex-wrap: wrap; gap: 1.4rem; margin: 0; padding: 0; list-style: none; }
+      .nav-links a { color: var(--muted); font-size: .95rem; text-decoration: none; }
+      .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent); }
 
+      .hero { padding: clamp(5rem, 12vw, 9rem) 0 6rem; }
+      .eyebrow { color: var(--accent); font-size: .85rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+      h1 { max-width: 760px; margin: .75rem 0 1rem; font-size: clamp(2.8rem, 8vw, 5.4rem); line-height: 1.05; letter-spacing: -.055em; }
+      .hero p { max-width: 620px; color: var(--muted); font-size: 1.15rem; }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1.2rem;
+        padding: .8rem 1.15rem;
+        border: 1px solid var(--accent);
+        border-radius: 999px;
+        color: var(--background);
+        background: var(--accent);
+        font-weight: 750;
+        text-decoration: none;
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+      .button:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgb(115 224 193 / 20%); }
+
+      section { padding: 3.5rem 0; scroll-margin-top: 85px; }
+      .section-heading { margin: 0 0 .4rem; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -.04em; }
+      .section-intro { margin: 0 0 2rem; color: var(--muted); }
+      .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 1.2rem; }
       .project-card {
-        padding: 1.5rem;
-        border-radius: 12px;
-        background: #fff;
-        box-shadow: 0 4px 16px rgb(0 0 0 / 8%);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: var(--surface);
+        transition: transform .2s ease, border-color .2s ease, background .2s ease;
       }
+      .project-card:hover { transform: translateY(-5px); border-color: rgb(115 224 193 / 55%); background: var(--surface-raised); }
+      .project-art {
+        min-height: 150px;
+        display: grid;
+        place-items: center;
+        color: var(--accent);
+        background: radial-gradient(circle at 50% 20%, #263e58, #121c30 70%);
+        font-size: 2.6rem;
+      }
+      .project-content { padding: 1.35rem; }
+      .project-content h3 { margin: 0 0 .5rem; font-size: 1.25rem; }
+      .project-content p { margin: 0; color: var(--muted); }
+      .tag { display: inline-block; margin-top: 1rem; padding: .25rem .65rem; border: 1px solid var(--border); border-radius: 999px; color: var(--accent); font-size: .8rem; }
 
-      .project-image {
-        display: block;
-        width: 100%;
-        max-width: 600px;
-        height: auto;
-        margin: 1rem 0;
-        border-radius: 8px;
+      .about-panel, .contact-panel { padding: clamp(1.4rem, 4vw, 2.3rem); border: 1px solid var(--border); border-radius: 18px; background: var(--surface); }
+      .about-panel p, .contact-panel p { margin: 0; color: var(--muted); }
+      .contact-panel p + p { margin-top: .8rem; }
+      .contact-panel strong { color: var(--text); }
+      footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--muted); font-size: .9rem; text-align: center; }
+
+      @media (max-width: 560px) {
+        .nav { align-items: flex-start; flex-direction: column; justify-content: center; padding: .9rem 0; }
+        .nav-links { gap: .9rem; }
+        .hero { padding-top: 5rem; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
       }
     </style>
   </head>
   <body>
-    <main>
-      <section id="projects" aria-labelledby="projects-heading">
-        <h1 id="projects-heading">My Projects</h1>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <a class="brand" href="#home">NORBERt</a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
-        <article class="project-card">
-          <h2>Student Management System</h2>
-          <img
-            class="project-image"
-            src="student-system.png"
-            alt="Screenshot of the Student Management System"
-          />
+    <main>
+      <section class="hero container" id="home" aria-labelledby="hero-title">
+        <span class="eyebrow">Portfolio</span>
+        <h1 id="hero-title">Hi, I’m Norbert.<br />I build useful things.</h1>
+        <p>
+          I’m a developer learning to create practical, user-friendly projects.
+          Explore my work and get in touch.
+        </p>
+        <a class="button" href="#projects">Explore my projects <span aria-hidden="true">&nbsp;↘</span></a>
+      </section>
+
+      <section class="container" id="projects" aria-labelledby="projects-title">
+        <h2 class="section-heading" id="projects-title">Featured projects</h2>
+        <p class="section-intro">A selection of my work and project ideas.</p>
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-art" aria-hidden="true">✦</div>
+            <div class="project-content">
+              <h3>Student Management System</h3>
+              <p>A Java and MySQL project for organizing and managing student information.</p>
+              <span class="tag">Java · MySQL</span>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-art" aria-hidden="true">⌘</div>
+            <div class="project-content">
+              <h3>Personal Portfolio</h3>
+              <p>This responsive portfolio website, built to introduce me and showcase my projects.</p>
+              <span class="tag">HTML · CSS</span>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-art" aria-hidden="true">▤</div>
+            <div class="project-content">
+              <h3>Next Project</h3>
+              <p>Use this card for another project. Replace this description with what it does.</p>
+              <span class="tag">Add your technologies</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="container" id="about" aria-labelledby="about-title">
+        <h2 class="section-heading" id="about-title">About me</h2>
+        <div class="about-panel">
           <p>
-            A Java and MySQL project used for managing student information.
+            I’m Norbert, a developer interested in building clear and helpful software.
+            I’ve worked on a student information management project using Java and MySQL.
+            I’m continuing to grow my skills by learning and building projects.
           </p>
-        </article>
+        </div>
+      </section>
+
+      <section class="container" id="contact" aria-labelledby="contact-title">
+        <h2 class="section-heading" id="contact-title">Get in touch</h2>
+        <div class="contact-panel">
+          <p><strong>Name:</strong> Norbert</p>
+          <p><strong>Email:</strong> Add your email address here</p>
+          <p><strong>Phone:</strong> Add your preferred contact number here</p>
+          <p>Replace the email and phone prompts with the contact details you want to share publicly.</p>
+        </div>
       </section>
     </main>
+
+    <footer>
+      <div class="container">© <span id="year">2026</span> Norbert. All rights reserved.</div>
+    </footer>
   </body>
 </html>
