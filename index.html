@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio of Ochieng Norbert: projects, skills, and contact information." />
+    <meta name="description" content="Ochieng Norbert's portfolio: web development projects, technical skills, and contact information." />
     <meta name="theme-color" content="#0b1120" />
-    <title>Ochieng Norbert | Portfolio</title>
+    <title>Ochieng Norbert | Developer Portfolio</title>
     <style>
       :root {
         color-scheme: dark;
@@ -17,19 +17,19 @@
         --accent: #73e0c1;
         --border: rgb(255 255 255 / 12%);
         --header: rgb(11 17 32 / 90%);
-        --shadow: 0 16px 42px rgb(0 0 0 / 18%);
+        --shadow: 0 18px 48px rgb(0 0 0 / 20%);
       }
       html[data-theme="light"] {
         color-scheme: light;
         --background: #f4f7fb;
-        --surface: #ffffff;
+        --surface: #fff;
         --surface-raised: #eef5f7;
         --text: #172033;
         --muted: #526078;
         --accent: #087f68;
         --border: rgb(23 32 51 / 14%);
-        --header: rgb(244 247 251 / 90%);
-        --shadow: 0 16px 42px rgb(23 32 51 / 10%);
+        --header: rgb(244 247 251 / 92%);
+        --shadow: 0 18px 48px rgb(23 32 51 / 10%);
       }
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
@@ -42,7 +42,7 @@
         transition: background-color .25s ease, color .25s ease;
       }
       a { color: inherit; }
-      .container { width: min(1100px, calc(100% - 2.5rem)); margin: 0 auto; }
+      .container { width: min(1120px, calc(100% - 2.5rem)); margin: 0 auto; }
       .site-header { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--border); background: var(--header); backdrop-filter: blur(14px); }
       .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
       .brand { color: var(--accent); font-weight: 850; text-decoration: none; letter-spacing: .04em; }
@@ -52,7 +52,7 @@
       .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent); }
       .theme-toggle { display: inline-flex; align-items: center; gap: .45rem; padding: .55rem .8rem; border: 1px solid var(--border); border-radius: 999px; color: var(--text); background: var(--surface); cursor: pointer; font: inherit; font-size: .9rem; transition: transform .2s ease, border-color .2s ease; }
       .theme-toggle:hover { transform: translateY(-2px); border-color: var(--accent); }
-      .hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 3rem; padding: clamp(5rem, 12vw, 9rem) 0 6rem; }
+      .hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: clamp(2rem, 7vw, 6rem); padding: clamp(5rem, 12vw, 9rem) 0 6rem; }
       .eyebrow { color: var(--accent); font-size: .85rem; font-weight: 750; letter-spacing: .15em; text-transform: uppercase; }
       h1 { max-width: 760px; margin: .75rem 0 1rem; font-size: clamp(2.8rem, 8vw, 5.4rem); line-height: 1.05; letter-spacing: -.055em; }
       .hero p { max-width: 620px; color: var(--muted); font-size: 1.15rem; }
@@ -60,21 +60,25 @@
       .button { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; margin-top: 1.2rem; padding: .8rem 1.15rem; border: 1px solid var(--accent); border-radius: 999px; color: var(--background); background: var(--accent); font-weight: 750; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, filter .2s ease; }
       .button:hover { transform: translateY(-3px); box-shadow: 0 8px 26px rgb(115 224 193 / 25%); filter: brightness(1.05); }
       .button.secondary { color: var(--text); background: transparent; }
-      .profile-photo { position: relative; display: grid; width: clamp(190px, 26vw, 280px); aspect-ratio: 1; place-items: center; overflow: hidden; border: 3px solid var(--accent); border-radius: 50%; background: radial-gradient(circle at 30% 25%, #33566a, #17233b 70%); box-shadow: var(--shadow); color: var(--accent); font-size: 4rem; font-weight: 800; animation: float 5s ease-in-out infinite; }
-      .profile-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .profile-frame { position: relative; display: grid; width: clamp(190px, 26vw, 280px); aspect-ratio: 1; place-items: center; overflow: hidden; border: 3px solid var(--accent); border-radius: 50%; background: radial-gradient(circle at 30% 25%, #33566a, #17233b 70%); box-shadow: var(--shadow); color: var(--accent); font-size: 4rem; font-weight: 800; animation: float 5s ease-in-out infinite; }
+      .profile-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
       section { padding: 3.5rem 0; scroll-margin-top: 85px; }
       .section-heading { margin: 0 0 .4rem; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -.04em; }
       .section-intro { margin: 0 0 2rem; color: var(--muted); }
-      .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 1.2rem; }
-      .project-card { overflow: hidden; border: 1px solid var(--border); border-radius: 18px; background: var(--surface); box-shadow: 0 0 0 transparent; transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease; }
+      .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 1.25rem; }
+      .project-card { overflow: hidden; border: 1px solid var(--border); border-radius: 20px; background: var(--surface); transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease; }
       .project-card:hover { transform: translateY(-7px); border-color: var(--accent); background: var(--surface-raised); box-shadow: var(--shadow); }
-      .project-art { min-height: 150px; display: grid; place-items: center; color: var(--accent); background: radial-gradient(circle at 50% 20%, #263e58, #121c30 70%); font-size: 2.6rem; transition: transform .3s ease; }
-      .project-card:hover .project-art { transform: scale(1.04); }
-      .project-content { padding: 1.35rem; }
-      .project-content h3 { margin: 0 0 .5rem; font-size: 1.25rem; }
+      .project-art { min-height: 175px; display: grid; place-items: center; color: var(--accent); background: radial-gradient(circle at 50% 20%, #263e58, #121c30 70%); font-size: 2.8rem; transition: transform .3s ease; }
+      .project-card:hover .project-art { transform: scale(1.03); }
+      .project-content { padding: 1.5rem; }
+      .project-content h3 { margin: 0 0 .55rem; font-size: 1.35rem; }
       .project-content p { margin: 0; color: var(--muted); }
-      .tag { display: inline-block; margin-top: 1rem; padding: .25rem .65rem; border: 1px solid var(--border); border-radius: 999px; color: var(--accent); font-size: .8rem; }
-      .about-panel, .contact-panel { padding: clamp(1.4rem, 4vw, 2.3rem); border: 1px solid var(--border); border-radius: 18px; background: var(--surface); box-shadow: var(--shadow); }
+      .project-content h4 { margin: 1.15rem 0 .35rem; font-size: .9rem; }
+      .project-content ul { margin: .25rem 0 0; padding-left: 1.2rem; color: var(--muted); }
+      .tag-list { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
+      .tag { display: inline-block; padding: .25rem .65rem; border: 1px solid var(--border); border-radius: 999px; color: var(--accent); font-size: .8rem; }
+      .skills { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.2rem; }
+      .about-panel, .contact-panel { padding: clamp(1.4rem, 4vw, 2.3rem); border: 1px solid var(--border); border-radius: 20px; background: var(--surface); box-shadow: var(--shadow); }
       .about-panel p, .contact-panel p { margin: 0; color: var(--muted); }
       .contact-panel p + p { margin-top: .8rem; }
       .contact-panel strong { color: var(--text); }
@@ -85,7 +89,7 @@
       .social-link svg { width: 21px; height: 21px; fill: currentColor; }
       footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--muted); font-size: .9rem; text-align: center; }
       @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
-      @media (max-width: 700px) { .hero { grid-template-columns: 1fr; gap: 2rem; } .profile-photo { grid-row: 1; width: 180px; } }
+      @media (max-width: 700px) { .hero { grid-template-columns: 1fr; gap: 2rem; } .profile-frame { grid-row: 1; width: 180px; } }
       @media (max-width: 560px) { .nav { align-items: flex-start; flex-direction: column; justify-content: center; padding: .9rem 0; } .nav-actions { width: 100%; justify-content: space-between; } .nav-links { gap: .9rem; } .hero { padding-top: 4rem; } }
       @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
     </style>
@@ -111,54 +115,71 @@
     <main>
       <section class="hero container" id="home" aria-labelledby="hero-title">
         <div>
-          <span class="eyebrow">Portfolio</span>
-          <h1 id="hero-title">Hi, I’m Ochieng Norbert.<br />I build useful things.</h1>
-          <p>I’m a developer learning to create practical, user-friendly projects. Explore my work and get in touch.</p>
+          <span class="eyebrow">Developer portfolio</span>
+          <h1 id="hero-title">Ochieng Norbert<br />Building practical software.</h1>
+          <p>I’m a developer building my skills through practical projects. My current work includes a student information management system using Java and MySQL.</p>
           <div class="hero-actions">
-            <a class="button" href="#projects">Explore my projects <span aria-hidden="true">↘</span></a>
-            <a class="button secondary" href="cv.pdf" download>Download my CV <span aria-hidden="true">↓</span></a>
+            <a class="button" href="#projects">View projects <span aria-hidden="true">↘</span></a>
+            <a class="button secondary" href="cv.pdf" download>Download CV <span aria-hidden="true">↓</span></a>
           </div>
         </div>
-        <div class="profile-photo" aria-label="Profile photo area for Ochieng Norbert">
+        <div class="profile-frame" aria-label="Profile photo area for Ochieng Norbert">
           <span aria-hidden="true">ON</span>
           <img src="profile.jpg" alt="Profile photo of Ochieng Norbert" onerror="this.hidden = true" />
         </div>
       </section>
 
       <section class="container" id="projects" aria-labelledby="projects-title">
-        <h2 class="section-heading" id="projects-title">Featured projects</h2>
-        <p class="section-intro">A selection of my work and project ideas.</p>
+        <h2 class="section-heading" id="projects-title">Selected projects</h2>
+        <p class="section-intro">Projects I have built and the technologies used.</p>
         <div class="project-grid">
-          <article class="project-card"><div class="project-art" aria-hidden="true">✦</div><div class="project-content"><h3>Student Management System</h3><p>A Java and MySQL project for organizing and managing student information.</p><span class="tag">Java · MySQL</span></div></article>
-          <article class="project-card"><div class="project-art" aria-hidden="true">⌘</div><div class="project-content"><h3>Personal Portfolio</h3><p>This responsive portfolio website, built to introduce me and showcase my projects.</p><span class="tag">HTML · CSS</span></div></article>
-          <article class="project-card"><div class="project-art" aria-hidden="true">▤</div><div class="project-content"><h3>Next Project</h3><p>Use this card for another project. Replace this description with what it does.</p><span class="tag">Add your technologies</span></div></article>
+          <article class="project-card">
+            <div class="project-art" aria-hidden="true">✦</div>
+            <div class="project-content">
+              <h3>Student Management System</h3>
+              <p>A Java and MySQL project for managing student information.</p>
+              <h4>Project focus</h4>
+              <ul><li>Organizing student information in a database-backed application</li><li>Applying Java and MySQL together in a practical project</li></ul>
+              <div class="tag-list"><span class="tag">Java</span><span class="tag">MySQL</span></div>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-art" aria-hidden="true">⌘</div>
+            <div class="project-content">
+              <h3>Personal Portfolio</h3>
+              <p>A responsive portfolio website presenting my background, project work, and contact information.</p>
+              <h4>Highlights</h4>
+              <ul><li>Responsive layout with accessible navigation</li><li>Interactive dark and light themes</li></ul>
+              <div class="tag-list"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+            </div>
+          </article>
         </div>
       </section>
 
       <section class="container" id="about" aria-labelledby="about-title">
-        <h2 class="section-heading" id="about-title">About me</h2>
-        <div class="about-panel"><p>I’m Ochieng Norbert, a developer interested in building clear and helpful software. I’ve worked on a student information management project using Java and MySQL. I’m continuing to grow my skills by learning and building projects.</p></div>
+        <h2 class="section-heading" id="about-title">About</h2>
+        <div class="about-panel">
+          <p>I’m Ochieng Norbert, a developer interested in building clear, useful software. I’ve worked on a student information management project using Java and MySQL and created this portfolio to present my work. I’m continuing to develop my skills through hands-on projects.</p>
+          <div class="skills" aria-label="Technologies used in my projects"><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+        </div>
       </section>
 
       <section class="container" id="contact" aria-labelledby="contact-title">
-        <h2 class="section-heading" id="contact-title">Get in touch</h2>
+        <h2 class="section-heading" id="contact-title">Contact</h2>
+        <p class="section-intro">Feel free to reach out about opportunities or collaboration.</p>
         <div class="contact-panel">
           <p><strong>Name:</strong> Ochieng Norbert</p>
           <p><strong>Email:</strong> <a href="mailto:norbertochieng4@gmail.com">norbertochieng4@gmail.com</a></p>
           <p><strong>Phone:</strong> <a href="tel:0792616218">0792616218</a></p>
           <div class="social-links" aria-label="Social media links">
-            <a class="social-link" href="https://www.tiktok.com/@great_minds09?_r=1&amp;_t=ZS-9BOex6uPQGI" target="_blank" rel="noopener noreferrer" aria-label="TikTok (opens in a new tab)">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 7.2a7.1 7.1 0 0 1-4.4-1.5v8.1a6.1 6.1 0 1 1-5.3-6.1v3.2a2.9 2.9 0 1 0 2.1 2.8V2.5h3.2c.2 2 1.7 3.7 4.4 4v.7Z"/></svg>
-            </a>
-            <a class="social-link" href="https://www.instagram.com/nature_trails_norber?obrf=MXV5OWd1NTE5MTJrbA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram (opens in a new tab)">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm4.2 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.3-3.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z"/></svg>
-            </a>
+            <a class="social-link" href="https://www.tiktok.com/@great_minds09?_r=1&amp;_t=ZS-9BOex6uPQGI" target="_blank" rel="noopener noreferrer" aria-label="TikTok (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 7.2a7.1 7.1 0 0 1-4.4-1.5v8.1a6.1 6.1 0 1 1-5.3-6.1v3.2a2.9 2.9 0 1 0 2.1 2.8V2.5h3.2c.2 2 1.7 3.7 4.4 4v.7Z"/></svg></a>
+            <a class="social-link" href="https://www.instagram.com/nature_trails_norber?obrf=MXV5OWd1NTE5MTJrbA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm4.2 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.3-3.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z"/></svg></a>
           </div>
         </div>
       </section>
     </main>
 
-    <footer><div class="container">© <span id="year"></span> Ochieng Norbert. All rights reserved.</div></footer>
+    <footer><div class="container">© <span id="year"></span> Ochieng Norbert</div></footer>
     <script>
       const page = document.documentElement;
       const themeButton = document.getElementById("theme-toggle");
